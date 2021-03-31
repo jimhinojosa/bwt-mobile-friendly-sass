@@ -22,5 +22,40 @@
             <button class="card-button">Learn More</button>
        </div>
     </div>
+    @mixin stage($padding, $margin, $backgroundColor: none) {
+        padding: $padding;
+        margin: $margin;
+        background-color: $backgroundColor;
+        border: 1px solid;
+    }
+    @function columnWidthGenerator($columnCount) {
+        $widthResult: 0;
+        @for $i from 1 through $columnCount {
+            $widthResult: (12/$i);
+            
+        }
+        @return $widthResult
+    }
+    ​
+    $columnCount: 12;
+    @for $i from 1 through $columnCount {
+        .col-#{$i} {
+            width: 100% / columnWidthGenerator($i);
+            
+        }
+    }
+    ​
+    $colors: (
+        primary: blue,
+        secondary: red,
+        light: #f5f5f5
+    );
+    ​
+    @each $key, $value in $colors {
+        .#{$key} {
+            color: $value;
+        }
+    }
+    <script src="js/main.js"></script>
 </body>
 </html>
